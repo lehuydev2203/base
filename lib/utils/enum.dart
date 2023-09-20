@@ -1,0 +1,4 @@
+enum Stores{
+  token,
+  user
+}
