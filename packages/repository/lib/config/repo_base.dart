@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'server.dart';
 
 enum Method { post, get, put, delete }

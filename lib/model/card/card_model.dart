@@ -26,9 +26,7 @@ class CardModel extends BaseModel {
   Cards? card;
 
   Future<List<Cards>> get() async {
-    print('Mode; object get');
     Map<String, dynamic> res = await Services.card.get();
-    print('Res model: $res');
     if (res['status'] == 1) {
       List<dynamic> dataDynamic = res["data"];
       List<Cards> data = dataDynamic.map((e) => Cards.fromJson(e)).toList();
@@ -38,7 +36,6 @@ class CardModel extends BaseModel {
   }
 
   Future<dynamic> create(data) async {
-    print('Mode; object create');
     Map<String, dynamic> res = await Services.card.create(data);
     if (res['status'] == 1) {
       return true;
@@ -47,10 +44,8 @@ class CardModel extends BaseModel {
   }
 
   Future<Cards?> getDetail(id) async {
-    print('Mode; object detail');
 
     Map<String, dynamic> res = await Services.card.getDetail({'id': id});
-    print('Res model: $res');
     if (res['status'] == 1) {
       return card = Cards(
           code: res['data']['code'],
@@ -61,7 +56,6 @@ class CardModel extends BaseModel {
   }
 
   Future<dynamic> update(data) async {
-    print('Mode; object update');
     Map<String, dynamic> res = await Services.card.update(data);
     if (res['status'] == 1) {}
   }

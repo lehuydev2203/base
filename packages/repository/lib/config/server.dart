@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'url.dart';
 
@@ -32,12 +33,16 @@ class Server {
           throw Exception('Invalid HTTP method: $method');
       }
     } catch (e) {
-      print('Error making $method request to $url: $e');
+      if (kDebugMode) {
+        print('Error making $method request to $url: $e');
+      }
       // throw Exception('Error making $method request to $url: $e');
     }
 
     if (response.statusCode != 200) {
-      print('Failed to $method $url: ${response.statusCode}');
+      if (kDebugMode) {
+        print('Failed to $method $url: ${response.statusCode}');
+      }
     }
 
     return json.decode(response.body);

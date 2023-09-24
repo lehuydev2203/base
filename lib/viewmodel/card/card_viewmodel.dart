@@ -17,30 +17,25 @@ class CardViewModel with ChangeNotifier {
 
   void get() async {
     await _model.get();
-    print('VM get');
     notifyListeners();
   }
 
   void create(context) async {
-    print('VM create');
     // await _model.get();
-    // notifyListeners();
+    notifyListeners();
   }
 
   void detail(context, id) async {
-    print('VM detail');
     await _model.getDetail(id);
     notifyListeners();
     var res = _model.card;
-    print('VM detail: $res');
     if (res?.id != null) {
       await Navigator.pushReplacementNamed(context, RoutesName.CARD_DETAIL);
     }
   }
 
   void update(context) async {
-    print('VM update');
     // await _model.get();
-    // notifyListeners();
+    notifyListeners();
   }
 }

@@ -1,4 +1,4 @@
-import 'package:repository/config/repoBase.dart';
+import 'package:repository/config/repo_base.dart';
 
 import '../config/configs.dart';
 

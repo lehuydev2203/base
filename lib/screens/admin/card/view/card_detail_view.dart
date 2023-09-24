@@ -22,7 +22,7 @@ class _CardDetailView extends State<CardDetailView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.75,
               height: MediaQuery.of(context).size.width * 0.75,
               child: Card(
@@ -37,7 +37,7 @@ class _CardDetailView extends State<CardDetailView> {
             const SizedBox(height: 20), // Khoảng cách giữa Card và nút button
             ElevatedButton(
               onPressed: () {
-               cardModel.readCard();
+                cardModel.readCard();
               },
               child: const Text('Sử dụng code với NFC Manager'),
             ),
