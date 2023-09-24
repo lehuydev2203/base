@@ -1,0 +1,44 @@
+# Build files
+build/*
+.dart_tool/
+.packages
+.pub-cache/
+
+# IDE files
+.idea/
+.vscode/
+
+# Generated files
+*.iml
+*.g.dart
+
+# iOS files
+ios/Podfile.lock
+ios/Pods/
+ios/Runner.xcworkspace/
+
+# Android files
+android/.gradle/
+android/build/
+android/key.properties
+android/app/build/
+
+# macOS/OS X files
+.DS_Store
+
+# Flutter create command files
+ios/Flutter/
+android/gradlew
+android/app/gradle/wrapper/gradle-wrapper.jar
+
+# Flutter/Dart specific files
+**.dart_tool/
+**.flutter-plugins
+**.flutter-plugins-dependencies
+**.flutter-plugins.lock
+**.packages
+**.pub-cache/
+**/pubspec.lock
+pubspec.lock
+
+./build/*

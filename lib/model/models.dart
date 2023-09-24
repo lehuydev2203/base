@@ -4,3 +4,4 @@ export 'auth/register_model.dart';
 export 'auth/login_model.dart';
 export 'settings/settings_model.dart';
 export 'app/splash_model.dart';
+export 'card/card_model.dart';

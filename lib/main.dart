@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/viewmodel/card/card_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 import 'model/models.dart';
@@ -28,6 +29,7 @@ class App extends StatelessWidget {
           create: (context) => SettingViewModel(SettingModel())),
       ChangeNotifierProvider(
           create: (context) => SplashViewModel(SplashModel())),
+      ChangeNotifierProvider(create: (context) => CardViewModel(CardModel())),
     ], child: const AppNavigate());
   }
 }

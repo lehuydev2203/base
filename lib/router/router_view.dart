@@ -16,6 +16,8 @@ class AppNavigate extends StatelessWidget {
       RoutesName.DEFAULT: (context) => const SplashView(),
       RoutesName.LOGIN: (context) => const LoginView(),
       RoutesName.HOME: (context) => const HomeView(),
+      RoutesName.CARD: (context) => const CardView(),
+      RoutesName.CARD_DETAIL: (context) => const CardDetailView(),
       RoutesName.MAIN: (context) => const Mainview(),
       RoutesName.REGISTER: (context) => const RegisterView(),
       RoutesName.PROFILE: (context) => const ProfileView(),

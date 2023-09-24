@@ -8,6 +8,7 @@ class Server {
 
   static Future<Map<String, dynamic>> _request(String method, String url,
       {Map<String, String>? headers, Object? body, Encoding? encoding}) async {
+    // ignore: prefer_typing_uninitialized_variables
     var response;
     var header = {'Content-Type': 'application/json', ...?headers};
     try {
@@ -44,6 +45,7 @@ class Server {
 
   static Future<Map<String, dynamic>> get(String url,
       {Map<String, String>? headers}) async {
+        
     return await _request('GET', url, headers: headers);
   }
 

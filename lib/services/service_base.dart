@@ -1,4 +1,5 @@
 // ignore: file_names
+import 'package:flutter/foundation.dart';
 import 'package:flutter_base/utils/enum.dart';
 import 'package:flutter_base/utils/store.dart';
 
@@ -11,7 +12,7 @@ class ServiceBase {
   }
 
   void _initToken() async {
-    token = await Store.getString(Stores.token) ?? '';
+    await getToken();
   }
 
   Future<Map<String, dynamic>> handleApiResponse(Map<String, dynamic> res,
@@ -35,5 +36,31 @@ class ServiceBase {
 
   Future<dynamic> setToken(String token) async {
     token = token;
+  }
+
+  Future<dynamic> callApi(Function? func, Map<String, dynamic> data) async {
+    String? tokenKey = await Store.getString(Stores.token);
+
+    if (tokenKey != null) {
+      Map<String, String> headers = {"Authorization": 'Bearer $tokenKey'};
+      if (kDebugMode) {
+        print('Headers $headers');
+      }
+
+      if (func != null) {
+        dynamic result = await func(data, headers);
+        return await handleApiResponse(result);
+      } else {
+        return await handleApiResponse({
+          'status': 0,
+          'data': {'message': 'Unknown action'}
+        });
+      }
+    }
+
+    return {
+      'status': 0,
+      'data': {'message': 'Token is null'}
+    };
   }
 }

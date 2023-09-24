@@ -1,7 +1,12 @@
+import 'package:repository/config/repoBase.dart';
 import '../config/configs.dart';
 
 class AuthRepositories {
   static Future<dynamic> login(data) async {
-    return await Server.post(Urls.LOGIN.toString(), body: data);
+    return await RepositoryBase.callApi(Method.post, Urls.AUTH_LOGIN, data);
+  }
+
+  static Future<dynamic> create(data) async {
+    return await RepositoryBase.callApi(Method.post, Urls.AUTH_REGISTER, data);
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter_base/utils/store.dart';
 import 'package:repository/repositories/auth.dart';
 
 class AuthService extends ServiceBase {
+  
   Future<Map<String, dynamic>> login(String username, String password) async {
     var data = {"username": username, "password": password};
     var res = await AuthRepositories.login(data);

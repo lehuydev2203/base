@@ -11,7 +11,7 @@ class HomeService extends ServiceBase {
     if (tokenKey != null) {
       token = tokenKey;
       Map<String, String> data = {"Authorization": 'Bearer $tokenKey'};
-      var res = await HomeRepositories.getData(data);
+      var res = await HomeRepositories.getData(null, data);
       return await handleApiResponse(res);
     }
 

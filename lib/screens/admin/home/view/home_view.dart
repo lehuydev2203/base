@@ -13,7 +13,6 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-
     Provider.of<HomeViewModel>(context, listen: false).get(context);
   }
 

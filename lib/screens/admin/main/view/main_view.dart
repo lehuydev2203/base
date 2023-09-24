@@ -14,6 +14,7 @@ class _MainviewState extends State<Mainview> {
   static const List<Widget> _widgetScreen = <Widget>[
     HomeView(),
     ProfileView(),
+    CardView(),
     SettingsView()
   ];
 
@@ -34,10 +35,12 @@ class _MainviewState extends State<Mainview> {
           BottomNavigationBarItem(icon: Icon(Icons.countertops), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_box), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_box), label: 'Card'),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Setting'),
         ],
         currentIndex: _seletedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.blue, // Màu của mục được chọn
+        unselectedItemColor: Colors.grey, // Màu của các mục chưa được chọn
         onTap: _selectIndexItem,
       ),
     );

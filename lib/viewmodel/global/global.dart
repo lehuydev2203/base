@@ -8,6 +8,5 @@ class GlobalViewModel extends ChangeNotifier {
 
   void checkSessionUser(context) async {
     await _model.checkSessionUser();
-    // notifyListeners();
   }
 }
