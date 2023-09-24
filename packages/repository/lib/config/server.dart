@@ -1,36 +1,36 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 import 'url.dart';
 import 'package:dio/dio.dart';
 
-
 class Server {
-  static Uri Function(dynamic url) parseUri =
-      (url) => Uri.parse(Urls.DOMAIN.toString() + url);
+  // ignore: prefer_function_declarations_over_variables
+  static final String Function(dynamic url) _parseUri =
+      (url) => Uri.parse(Urls.DOMAIN + url).toString();
 
-  static Dio _dio = Dio();
+  static final Dio _dio = Dio();
 
   static Future<Map<String, dynamic>> _request(String method, String url,
       {Map<String, String>? headers, Object? body, Encoding? encoding}) async {
+    dynamic response;
+    var header = {'Content-Type': 'application/json', ...?headers};
     try {
-      Response response;
-
       switch (method) {
         case 'GET':
           response =
-              await _dio.get(parseUri(url), options: Options(headers: header));
+              await _dio.get(_parseUri(url), options: Options(headers: header));
           break;
         case 'POST':
-          response = await _dio.post(parseUri(url),
+          response = await _dio.post(_parseUri(url),
               data: body, options: Options(headers: header));
           break;
         case 'PUT':
-          response = await _dio.put(parseUri(url),
+          response = await _dio.put(_parseUri(url),
               data: body, options: Options(headers: header));
           break;
         case 'DELETE':
-          response = await _dio.delete(parseUri(url),
+          response = await _dio.delete(_parseUri(url),
               data: body, options: Options(headers: header));
           break;
         default:
@@ -44,6 +44,7 @@ class Server {
       }
       // throw Exception('Error making $method request to $url: $e');
     }
+    return json.decode(response.body);
   }
 
   static Future<Map<String, dynamic>> get(String url,
