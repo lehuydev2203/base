@@ -5,33 +5,26 @@ import 'url.dart';
 import 'package:dio/dio.dart';
 
 class Server {
-  // ignore: prefer_function_declarations_over_variables
-  static final String Function(dynamic url) _parseUri =
-      (url) => Uri.parse(Urls.DOMAIN + url).toString();
-
   static final Dio _dio = Dio();
 
   static Future<Map<String, dynamic>> _request(String method, String url,
       {Map<String, String>? headers, Object? body, Encoding? encoding}) async {
     dynamic response;
-    var header = {'Content-Type': 'application/json', ...?headers};
+    _dio.options.baseUrl = Urls.DOMAIN;
+    _dio.options.headers = {'Content-Type': 'application/json', ...?headers};
     try {
       switch (method) {
         case 'GET':
-          response =
-              await _dio.get(_parseUri(url), options: Options(headers: header));
+          response = await _dio.get(url);
           break;
         case 'POST':
-          response = await _dio.post(_parseUri(url),
-              data: body, options: Options(headers: header));
+          response = await _dio.post(url, data: body);
           break;
         case 'PUT':
-          response = await _dio.put(_parseUri(url),
-              data: body, options: Options(headers: header));
+          response = await _dio.put(url, data: body);
           break;
         case 'DELETE':
-          response = await _dio.delete(_parseUri(url),
-              data: body, options: Options(headers: header));
+          response = await _dio.delete(url, data: body);
           break;
         default:
           throw Exception('Invalid HTTP method: $method');
