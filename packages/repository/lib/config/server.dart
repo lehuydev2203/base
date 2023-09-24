@@ -2,55 +2,52 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'url.dart';
+import 'package:dio/dio.dart';
+
 
 class Server {
   static Uri Function(dynamic url) parseUri =
       (url) => Uri.parse(Urls.DOMAIN.toString() + url);
 
+  static Dio _dio = Dio();
+
   static Future<Map<String, dynamic>> _request(String method, String url,
       {Map<String, String>? headers, Object? body, Encoding? encoding}) async {
-    // ignore: prefer_typing_uninitialized_variables
-    var response;
-    var header = {'Content-Type': 'application/json', ...?headers};
     try {
+      Response response;
+
       switch (method) {
         case 'GET':
-          response = await http.get(parseUri(url), headers: header);
+          response =
+              await _dio.get(parseUri(url), options: Options(headers: header));
           break;
         case 'POST':
-          response = await http.post(parseUri(url),
-              headers: header, body: json.encode(body), encoding: encoding);
+          response = await _dio.post(parseUri(url),
+              data: body, options: Options(headers: header));
           break;
         case 'PUT':
-          response = await http.put(parseUri(url),
-              headers: header, body: body, encoding: encoding);
+          response = await _dio.put(parseUri(url),
+              data: body, options: Options(headers: header));
           break;
         case 'DELETE':
-          response = await http.delete(parseUri(url),
-              headers: header, body: body, encoding: encoding);
+          response = await _dio.delete(parseUri(url),
+              data: body, options: Options(headers: header));
           break;
         default:
           throw Exception('Invalid HTTP method: $method');
       }
+
+      return response.data;
     } catch (e) {
       if (kDebugMode) {
         print('Error making $method request to $url: $e');
       }
       // throw Exception('Error making $method request to $url: $e');
     }
-
-    if (response.statusCode != 200) {
-      if (kDebugMode) {
-        print('Failed to $method $url: ${response.statusCode}');
-      }
-    }
-
-    return json.decode(response.body);
   }
 
   static Future<Map<String, dynamic>> get(String url,
       {Map<String, String>? headers}) async {
-        
     return await _request('GET', url, headers: headers);
   }
 

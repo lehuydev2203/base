@@ -32,6 +32,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///Users/lehuy/.pub-cache/hosted/pub.dev/dio-5.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///Users/lehuy/.pub-cache/hosted/pub.dev/fake_async-1.3.1",
       "packageUri": "lib/",
@@ -164,7 +170,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-09-18T07:20:10.216250Z",
+  "generated": "2023-09-24T11:34:07.911723Z",
   "generator": "pub",
   "generatorVersion": "3.1.2"
 }

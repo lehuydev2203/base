@@ -18,6 +18,10 @@ collection
 2.18
 file:///Users/lehuy/.pub-cache/hosted/pub.dev/collection-1.17.2/
 file:///Users/lehuy/.pub-cache/hosted/pub.dev/collection-1.17.2/lib/
+dio
+2.15
+file:///Users/lehuy/.pub-cache/hosted/pub.dev/dio-5.3.3/
+file:///Users/lehuy/.pub-cache/hosted/pub.dev/dio-5.3.3/lib/
 fake_async
 2.12
 file:///Users/lehuy/.pub-cache/hosted/pub.dev/fake_async-1.3.1/
@@ -92,8 +96,8 @@ file:///Users/lehuy/.pub-cache/hosted/pub.dev/web-0.1.4-beta/
 file:///Users/lehuy/.pub-cache/hosted/pub.dev/web-0.1.4-beta/lib/
 repository
 2.18
-file:///Users/lehuy/Library/Mobile%20Documents/com~apple~CloudDocs/learn/FE/Mobile/flutter/flutter_base/packages/repository/
-file:///Users/lehuy/Library/Mobile%20Documents/com~apple~CloudDocs/learn/FE/Mobile/flutter/flutter_base/packages/repository/lib/
+file:///Users/lehuy/data/dev/flutter/base/packages/repository/
+file:///Users/lehuy/data/dev/flutter/base/packages/repository/lib/
 sky_engine
 3.0
 file:///Users/lehuy/data/dev/flutter/flutter/bin/cache/pkg/sky_engine/
